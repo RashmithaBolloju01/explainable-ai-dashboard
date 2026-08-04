@@ -6,8 +6,8 @@ An interactive **Streamlit dashboard** that predicts loan-default risk with a
 transparent, interview-ready demo of Explainable AI in practice.
 
 > 🔗 No external datasets required — a realistic loan-application dataset is
-generated programmatically with `sklearn.datasets.make_classification`, so
-the whole project runs out of the box.
+> generated programmatically with `sklearn.datasets.make_classification`, so
+> the whole project runs out of the box.
 
 ---
 
@@ -92,7 +92,7 @@ Explainable-AI-Dashboard/
 2. (Recommended) create a virtual environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate      # Windows: venv\\Scripts\\activate
+   source venv/bin/activate      # Windows: venv\Scripts\activate
    ```
 3. **Install dependencies**:
    ```bash
@@ -110,8 +110,8 @@ streamlit run app.py
 ```
 
 - On the **first run**, no `model.pkl` exists yet, so the app will
-automatically generate the dataset, train the Random Forest, save the
-model, and display the test accuracy in the sidebar.
+  automatically generate the dataset, train the Random Forest, save the
+  model, and display the test accuracy in the sidebar.
 - On subsequent runs, the saved model is loaded instantly.
 
 If you'd prefer to train the model manually beforehand (e.g. to inspect
