@@ -66,7 +66,7 @@ Explainable-AI-Dashboard/
 Clone the repository
 
 bash
-git clone https://github.com/your-username/explainable-ai-dashboard.git
+git clone https://github.com/RashmithaBolloju01/explainable-ai-dashboard.git
 
 
 Navigate to the project directory
