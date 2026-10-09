@@ -1,153 +1,123 @@
-# 🧠 Explainable AI Prediction System (XAI Dashboard)
+# Explainable AI Prediction System (XAI Dashboard)
 
-An interactive **Streamlit dashboard** that predicts loan-default risk with a
-`RandomForestClassifier` and explains *every single prediction* using
-**SHAP (SHapley Additive exPlanations)** — turning a black-box model into a
-transparent, interview-ready demo of Explainable AI in practice.
+An interactive Streamlit dashboard that predicts loan-default risk using a Random Forest classifier and explains individual predictions with SHAP (SHapley Additive exPlanations).
 
-> 🔗 No external datasets required — a realistic loan-application dataset is
-generated programmatically with `sklearn.datasets.make_classification`, so
-the whole project runs out of the box.
+The project demonstrates how Explainable AI improves model transparency by showing how applicant features influence each prediction through visualizations, feature contributions, and natural-language explanations.
 
----
+## Overview
 
-## 📌 Project Overview
+The dashboard classifies loan applicants into high-risk and low-risk categories and displays the predicted default probability alongside a SHAP-based explanation.
 
-Machine learning models are often criticized for being "black boxes." This
-project demonstrates how **Explainable AI (XAI)** techniques can address that
-problem: a Random Forest is trained to predict whether a loan applicant is
-**likely to default** or is **low risk**, and every prediction is paired with
-a SHAP-based breakdown of *why* the model reached that conclusion — including
-plain-English summaries, waterfall/force/summary plots, and a per-feature
-contribution table.
+The project uses a synthetically generated dataset, eliminating the need for external data sources and allowing the application to run locally.
 
-**Note on the data:** the dataset is synthetically generated with
-`make_classification` and then rescaled into human-readable business
-features (income, credit score, etc.) purely to make the demo relatable.
-The statistical relationships between features and the target are
-therefore illustrative, not a reflection of real-world credit-risk
-modeling — the focus of this project is the **explainability pipeline**,
-not financial accuracy.
+**Note:** The synthetic dataset demonstrates the explainability workflow, not real-world credit-risk assessment. Its feature relationships do not represent actual lending patterns.
 
----
+## Features
 
-## ✨ Features
+- **Home Page:** Project overview, technology stack, and navigation.
+- **Loan Prediction:** Interactive inputs for income, debt-to-income ratio, credit score, loan amount, employment years, and age.
+- **Risk Assessment:** Predicted class, default probability, and model confidence.
+- **SHAP Waterfall Plot:** Shows how individual features influence a prediction.
+- **SHAP Force Plot:** Visualizes positive and negative feature contributions.
+- **Feature Importance:** Ranks features by their impact on an individual prediction.
+- **SHAP Summary Plot:** Displays global feature importance across multiple applicants.
+- **Contribution Table:** Lists feature values and their corresponding SHAP contributions.
+- **Natural-Language Explanations:** Summarizes the main factors influencing each prediction.
+- **Automatic Model Training:** Generates the dataset, trains the classifier, and saves the model when no saved model exists.
 
-- **🏠 Home page** — project overview, tech stack, and quick orientation.
-- **🔮 Prediction page**
-  - Interactive sliders for 6 applicant features (income, debt ratio, credit
-    score, loan amount, employment years, age).
-  - One-click prediction with **class label**, **default probability**, and
-    **model confidence**.
-- **🧩 Explainable AI panel** (generated after every prediction)
-  - 💧 **Waterfall plot** — how each feature pushes the prediction from the
-    baseline to the final result.
-  - ⚡ **Force plot** — compact visual of the same push/pull effect.
-  - 📊 **Feature importance bar chart** — ranks features by impact for this
-    prediction.
-  - 🌐 **SHAP summary (beeswarm) plot** — global feature impact across many
-    sample applicants.
-  - 📋 **Contribution table** — exact feature values + SHAP contributions.
-  - 💬 **Natural-language explanation**, e.g. *"The prediction is mainly
-    influenced by high debt-to-income ratio and low credit score."*
-- **🎨 Professional UI** — wide layout, sidebar navigation, card-style
-  metrics, tabs, and clean spacing designed to look good in interviews/demos.
-- **⚙️ Auto-training** — if no saved model is found, the app trains one
-  automatically on first launch and reports test accuracy.
+## Tech Stack
 
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
+| Technology | Purpose |
 |---|---|
-| **Python** | Core language |
-| **Streamlit** | Interactive web dashboard |
-| **Scikit-learn** | RandomForestClassifier + synthetic dataset generation |
-| **Pandas / NumPy** | Data manipulation |
-| **Matplotlib** | Rendering SHAP plots |
-| **SHAP** | Model explainability (TreeExplainer) |
+| Python | Core programming language |
+| Streamlit | Interactive dashboard |
+| Scikit-learn | Dataset generation and model training |
+| RandomForestClassifier | Loan-default prediction |
+| SHAP | Model explainability |
+| Pandas | Data manipulation |
+| NumPy | Numerical operations |
+| Matplotlib | Visualization rendering |
 
----
+## Project Structure
 
-## 📂 Project Structure
-
-```
+```text
 Explainable-AI-Dashboard/
-│
-├── app.py               # Streamlit dashboard (UI, navigation, layout)
-├── model.py              # Dataset generation, training, save/load helpers
-├── train.py              # Standalone script: train + save model manually
-├── explain.py             # All SHAP logic (explainer, plots, contribution table)
-├── utils.py               # Feature config, formatting, NL explanation builder
-├── requirements.txt      # Python dependencies
-└── README.md              # This file
+├── app.py
+├── model.py
+├── train.py
+├── explain.py
+├── utils.py
+├── requirements.txt
+└── README.md
 ```
 
----
+- `app.py` — Dashboard interface, navigation, and prediction workflow.
+- `model.py` — Dataset generation, model training, and model persistence.
+- `train.py` — Standalone model training script.
+- `explain.py` — SHAP explanations, visualizations, and feature contributions.
+- `utils.py` — Feature configuration, formatting, and natural-language explanations.
+- `requirements.txt` — Project dependencies.
 
-## 🚀 Installation
+## Installation
 
-1. **Clone or download** this project folder.
-2. (Recommended) create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate      # Windows: venv\\Scripts\\activate
-   ```
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Clone the Repository
 
----
+```bash
+git clone <repository-url>
+cd Explainable-AI-Dashboard
+```
 
-## ▶️ How to Run
+Replace `<repository-url>` with your GitHub repository URL.
 
-Simply launch the Streamlit app:
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+Activate the environment:
+
+**macOS / Linux**
+```bash
+source venv/bin/activate
+```
+
+**Windows**
+```bash
+venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run the Application
+
+Start the dashboard:
 
 ```bash
 streamlit run app.py
 ```
 
-- On the **first run**, no `model.pkl` exists yet, so the app will
-automatically generate the dataset, train the Random Forest, save the
-model, and display the test accuracy in the sidebar.
-- On subsequent runs, the saved model is loaded instantly.
+On the first launch, the application generates a synthetic dataset, trains the Random Forest classifier, saves the model, and displays its test accuracy. Subsequent launches load the saved model.
 
-If you'd prefer to train the model manually beforehand (e.g. to inspect
-accuracy in the terminal first), run:
+To train the model separately, run:
 
 ```bash
 python train.py
 ```
 
-Then launch the dashboard as usual with `streamlit run app.py`.
+## Future Improvements
 
----
+- Support custom CSV dataset uploads.
+- Compare multiple classification models.
+- Store prediction history and compare explanations.
+- Add SHAP dependence plots for feature interactions.
+- Deploy the dashboard using Streamlit Community Cloud or Docker.
+- Add authentication and database integration.
 
-## 🖼️ Screenshots
+## License
 
-> _Add screenshots here after running the app locally, e.g.:_
-
-| Home Page | Prediction + SHAP Explanation |
-|---|---|
-| `screenshots/home.png` | `screenshots/predict.png` |
-
----
-
-## 🔮 Future Improvements
-
-- Add support for uploading a custom CSV dataset instead of the synthetic one.
-- Add model comparison (Random Forest vs. Logistic Regression vs. XGBoost)
-  with SHAP explanations for each.
-- Persist prediction history and let users compare past explanations.
-- Add SHAP dependence plots for deeper feature-interaction analysis.
-- Deploy to Streamlit Community Cloud / Docker for a live public demo link.
-- Add authentication + a database backend for multi-user usage tracking.
-
----
-
-## 📄 License
-
-This project is open-source and free to use for learning, portfolio, and
-demonstration purposes.
+This project is intended for educational, portfolio, and demonstration purposes.
